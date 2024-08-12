@@ -44,6 +44,9 @@ export class PageRegistryComponent implements OnInit {
     }, 1000);
   }
 
+  /**
+   * Ciclo de vida de componente, En caso de existir un param "id" consulta informacion del producto
+   */
   ngOnInit(): void {
     this.formAccounts = this.fb.group(this.createControls());
     this.formAccounts.controls['id'].valueChanges.subscribe(

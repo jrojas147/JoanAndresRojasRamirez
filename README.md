@@ -1,4 +1,6 @@
 # JoanAndresRojasRamirez
+email jarojasramirez147@gmail.com
+tel : +57 311 8538788
 Prueba tecnica Devsu Angular Front-End Developer - Sector Financiero/Bancario
 
 Me permito indicar distribucion de entregables prueba tecnica:
