@@ -68,25 +68,19 @@ describe('PageHomeComponent', () => {
     expect(component.listAccounts).toEqual(mockAccounts.data);
   });
 
-  it('should handle emitTable actions', () => {
+  it('should handle emitTable', () => {
     const mockAccount: AccountsModel = {
-      id: '1',
+          id: '1',
           name: 'Test',
           logo: '1',
           description: 'Test description',
           date_release: new Date('2024-08-01'),
           date_revision: new Date('2024-08-01'),
     };
-
-    // Test add action
     component.emitTable({ action: 'add' });
     expect(router.navigateByUrl).toHaveBeenCalledWith('/registry');
-
-    // Test edit action
     component.emitTable({ action: 'edit', data: mockAccount });
     expect(router.navigateByUrl).toHaveBeenCalledWith('/registry/1');
-
-    // Test delete action
     const mockResponse: AccountsListModel = { data: [] };
     bankService.deleteAccounts.and.returnValue(of(mockResponse)); // Mock observable
     component.emitTable({ action: 'delete', data: mockAccount });

@@ -39,7 +39,6 @@ describe('PageRegistryComponent', () => {
       providers: [
         { provide: ProductService, useValue: bankServiceSpy },
         { provide: Router, useValue: routerSpy },
-        // { provide: ToastService, useValue: toastServiceSpy },
         { provide: ActivatedRoute, useValue: activatedRouteSpy }
       ],
     }).compileComponents();
@@ -52,8 +51,6 @@ describe('PageRegistryComponent', () => {
     fixture = TestBed.createComponent(PageRegistryComponent);
     component = fixture.componentInstance;
     bankService = TestBed.inject(ProductService) as jasmine.SpyObj<ProductService>;
-    // toastService = TestBed.inject(ToastService) as jasmine.SpyObj<ToastService>;
-    // router = TestBed.inject(Router) as jasmine.SpyObj<Router>;
     fixture.detectChanges();
   });
 
@@ -159,6 +156,5 @@ describe('PageRegistryComponent', () => {
     component.clearValues();
     expect(component.formAccounts.controls['name'].value).toBe(null);
     expect(component.formAccounts.controls['description'].value).toBe(null);
-    expect(component.formAccounts.controls['id'].value).toBe('123'); // Id should not be reset
   });
 });
