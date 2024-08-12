@@ -18,7 +18,6 @@ describe('ModalService', () => {
   it('add()', () => {
     const id = 'modal-1';
     service.add(id);
-    console.log(service.modals)
     expect(service.modals).toEqual(['modal-1']);
   });
 
