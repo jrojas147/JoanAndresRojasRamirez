@@ -1,7 +1,15 @@
+@import '../../styles/shared/mixins';
+
+
+
 .registry {
   background: #ffff;
   border-radius: 6px;
   margin: 90px 20% auto;
+  @include small() {
+    margin: 0;
+
+  }
 
   .title {
     text-align: center;
