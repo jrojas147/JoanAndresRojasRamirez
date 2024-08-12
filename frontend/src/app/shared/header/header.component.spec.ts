@@ -1,13 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HeaderComponent } from './header..component';
+import { Router } from '@angular/router';
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
   let fixture: ComponentFixture<HeaderComponent>;
+  let router: jasmine.SpyObj<Router>;
 
   beforeEach(async () => {
+    const routerSpy = jasmine.createSpyObj('Router', ['navigateByUrl']);
+
     await TestBed.configureTestingModule({
-      declarations: [ HeaderComponent ]
+      declarations: [ HeaderComponent ],
+      providers: [
+        { provide: Router, useValue: routerSpy }
+      ]
     })
     .compileComponents();
   });
@@ -15,6 +22,7 @@ describe('HeaderComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(HeaderComponent);
     component = fixture.componentInstance;
+    router = TestBed.inject(Router) as jasmine.SpyObj<Router>;
     fixture.detectChanges();
   });
 
@@ -47,5 +55,10 @@ describe('HeaderComponent', () => {
     const img = compiled.querySelector('img');
     expect(img).toBeTruthy();
     expect(img?.getAttribute('alt')).toBe('');
+  });
+
+  it('should navigate to home when homeUrl is called', () => {
+    component.homeUrl();
+    expect(router.navigateByUrl).toHaveBeenCalledWith('/');
   });
 });

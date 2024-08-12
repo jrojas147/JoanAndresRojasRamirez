@@ -129,6 +129,14 @@ export class PageRegistryComponent implements OnInit {
     }
   }
 
+  clearValues() {
+    Object.keys(this.formAccounts?.controls).forEach((key) => {
+      if (!(key === 'id' || key === 'date_revision')) {
+        this.formAccounts?.controls[key].reset();
+      }
+    });
+  }
+
   backUrl() {
     this.router.navigateByUrl('/');
   }

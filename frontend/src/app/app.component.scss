@@ -1,0 +1,19 @@
+.header {
+    background-color: #ffff;
+    text-align: center;
+    padding: 24px 0;
+  
+    img {
+      width: 130px;
+    }
+  
+    .action-img {
+      position: absolute;
+      left: 10px;
+      cursor: pointer;
+  
+      img {
+        width: 30px;
+      }
+    }
+  }

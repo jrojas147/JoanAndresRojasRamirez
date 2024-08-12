@@ -28,7 +28,7 @@ describe('PageRegistryComponent', () => {
     const activatedRouteSpy = jasmine.createSpyObj('ActivatedRoute', ['snapshot'], {
       snapshot: {
         paramMap: {
-          get: jasmine.createSpy().and.returnValue(null)  // Mock `paramMap.get` to return null
+          get: jasmine.createSpy().and.returnValue(null)  // Mock paramMap.get to return null
         }
       }
     });
@@ -151,5 +151,14 @@ describe('PageRegistryComponent', () => {
     component.checkIdAccount('123');
     expect(bankService.verifyAccount).toHaveBeenCalledWith('123');
     expect(component.existAccount).toBeTrue();
+  });
+
+  it('should reset all controls except id when clearValues is called', () => {
+    component.formAccounts.controls['name'].setValue('Test Name');
+    component.formAccounts.controls['description'].setValue('Test Description');
+    component.clearValues();
+    expect(component.formAccounts.controls['name'].value).toBe(null);
+    expect(component.formAccounts.controls['description'].value).toBe(null);
+    expect(component.formAccounts.controls['id'].value).toBe('123'); // Id should not be reset
   });
 });
