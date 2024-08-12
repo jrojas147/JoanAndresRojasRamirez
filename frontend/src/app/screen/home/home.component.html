@@ -1,0 +1,21 @@
+<section class="home">
+  <div class="body-home">
+    <div *ngIf="loading">
+      <div class="flex-row">
+        <div class="col-2">
+          <div class="form-controls">
+            <app-skeleton-loader [height]="50"></app-skeleton-loader>
+          </div>
+        </div>
+        <div class="col-2">
+        </div>
+      </div>
+      <app-skeleton-loader [height]="124"></app-skeleton-loader>
+    </div>
+
+    <app-table *ngIf="!loading" [columns]="columns" [dataRow]="listAccounts"
+      (emmitAction)="emitTable($event)"></app-table>
+  </div>
+</section>
+
+<app-toast></app-toast>

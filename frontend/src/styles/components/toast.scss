@@ -1,0 +1,62 @@
+.position-top-right {
+  top: 2%;
+  right: 2%;
+}
+
+.position-top-left {
+  top: 2%;
+  left: 2%;
+}
+
+.position-center {
+  top: 50%;
+  left: 50%;
+}
+
+.toast {
+  background-color: #489fe9;
+  border-radius: 6px;
+  width: 350px;
+  position: absolute;
+
+  .toast-grid {
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1);
+    display: grid;
+    grid-template-areas:
+      "img title btn-close"
+      "img message message";
+    grid-template-columns: 12% 78% 10%;
+    grid-template-rows: 50% 50%;
+
+    .img {
+      grid-area: img;
+      margin: 0 6px;
+      width: 20px;
+    }
+
+    .title {
+      grid-area: title;
+      padding: 5px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .message {
+      grid-area: message;
+      padding: 3px;
+      font-size: small;
+      white-space: pre-wrap;
+      word-break: break-all;
+    }
+
+    .btn-close {
+      grid-area: btn-close;
+    }
+
+    .flexbox-center {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}

@@ -1,0 +1,159 @@
+<section class="registry">
+
+  <div class="title">
+    <h1>Formulario de Registro - {{ idAccount ? 'Editar' : 'Nuevo' }} </h1>
+  </div>
+  <div class="body-form">
+    <form [formGroup]="formAccounts">
+      <div class="flex-row">
+        <div class="col-2">
+          <div class="form-controls">
+            <label class="form-label" for="">ID</label>
+            <input
+              *ngIf="!loading"
+              id="id"
+              name="id"
+              formControlName="id"
+              type="text">
+
+            <div *ngIf="formAccounts.controls['id'].errors && formAccounts.controls['id'].touched" class="error-field">
+              ID no válido!
+            </div>
+
+            <div *ngIf="existAccount && formAccounts.controls['id'].touched" class="error-field">
+              La cuenta ya existe!
+            </div>
+
+            <app-skeleton-loader *ngIf="loading" [height]="41"></app-skeleton-loader>
+          </div>
+        </div>
+        <div class="col-2">
+          <div class="form-controls">
+            <label class="form-label" for="">Nombre</label>
+            <input
+              *ngIf="!loading"
+              id="name"
+              formControlName="name"
+              name="name"
+              minlength="6"
+              maxlength="100"
+              type="text">
+
+            <div *ngIf="formAccounts.controls['name'].hasError('required') && formAccounts.controls['name'].touched"
+              class="error-field">
+              El campo es requerido
+            </div>
+
+            <div *ngIf="formAccounts.controls['name'].hasError('minlength') && formAccounts.controls['name'].touched"
+              class="error-field">
+              El campo no cumple con la longitud
+            </div>
+
+            <app-skeleton-loader *ngIf="loading" [height]="41"></app-skeleton-loader>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex-row">
+        <div class="col-2">
+          <div class="form-controls">
+            <label class="form-label" for="">Descripción</label>
+            <input
+              *ngIf="!loading"
+              id="description"
+              name="description"
+              formControlName="description"
+              minlength="10"
+              maxlength="200"
+              type="text">
+
+            <div *ngIf="formAccounts.controls['description'].hasError('required') && formAccounts.controls['description'].touched"
+              class="error-field">
+              El campo es requerido
+            </div>
+
+            <div *ngIf="formAccounts.controls['description'].hasError('minlength') && formAccounts.controls['description'].touched"
+              class="error-field">
+              El campo no cumple con la longitud
+            </div>
+
+            <app-skeleton-loader *ngIf="loading" [height]="41"></app-skeleton-loader>
+          </div>
+        </div>
+        <div class="col-2">
+          <div class="form-controls">
+            <label class="form-label" for="">Logo</label>
+            <input
+              *ngIf="!loading"
+              id="logo"
+              name="logo"
+              formControlName="logo"
+              type="text">
+
+            <div *ngIf="formAccounts.controls['logo'].errors && formAccounts.controls['logo'].touched"
+              class="error-field">
+              El campo es requerido
+            </div>
+
+            <app-skeleton-loader *ngIf="loading" [height]="41"></app-skeleton-loader>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex-row">
+        <div class="col-2">
+          <div class="form-controls">
+            <label class="form-label" for="">Fecha de Liberación</label>
+            <input
+              *ngIf="!loading"
+              id="date_release"
+              name="date_release"
+              formControlName="date_release"
+              type="text">
+
+            <div *ngIf="formAccounts.controls['date_release'].errors && formAccounts.controls['date_release'].touched"
+              class="error-field">
+              El campo es requerido
+            </div>
+
+            <app-skeleton-loader *ngIf="loading" [height]="41"></app-skeleton-loader>
+          </div>
+        </div>
+        <div class="col-2">
+          <div class="form-controls">
+            <label class="form-label" for="">Fecha de Reestructuración</label>
+            <input
+              *ngIf="!loading"
+              id="date_revision"
+              name="date_release"
+              formControlName="date_revision"
+              type="text">
+
+            <app-skeleton-loader *ngIf="loading" [height]="41"></app-skeleton-loader>
+          </div>
+        </div>
+      </div>
+
+      <div class="action-button">
+        <button class="secondary-button" (click)="backUrl()">Regresar</button>
+        <button
+          *ngIf="idAccount; else elseDiv"
+          class="primary-button"
+          [disabled]="formAccounts.status === 'INVALID'"
+          (click)="saveRegistry()"
+        >Editar</button>
+        <ng-template #elseDiv>
+          <button
+          class="primary-button"
+          [disabled]="formAccounts.status === 'INVALID' || existAccount"
+          (click)="saveRegistry()"
+        >Guardar</button>
+        </ng-template>
+      </div>
+    </form>
+
+  </div>
+
+</section>
+
+<app-toast></app-toast>

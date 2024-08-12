@@ -1,0 +1,32 @@
+button {
+  border: none;
+  border-radius: 4px;
+  color: #132748;
+  cursor: pointer;
+  padding: 14px 24px;
+  font-weight: 600;
+  margin: 10px;
+}
+
+button:disabled {
+  cursor: revert;
+  opacity: 0.6;
+}
+
+.action-button {
+  display: flex;
+  justify-content: center;
+  margin: 9px;
+}
+
+.primary-button {
+  background: #e9e971;
+}
+
+.secondary-button {
+  background: #ecedf3
+}
+
+.full-width {
+  width: 100%;
+}
